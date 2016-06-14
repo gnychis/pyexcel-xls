@@ -97,6 +97,8 @@ class XLSheet(SheetReader):
         """
         Random access to the xls cells
         """
+        if column > len(self.native_sheet._cell_values[row]) - 1:
+            return ''
         cell_type = self.native_sheet.cell_type(row, column)
         my_type = XLS_FORMAT_CONVERSION[cell_type]
         value = self.native_sheet.cell_value(row, column)
